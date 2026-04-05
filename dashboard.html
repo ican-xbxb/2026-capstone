@@ -19,7 +19,9 @@
         <!-- 로고 영역 -->
         <div class="logo-area">
             <!-- 텍스트 로고 -->
-            <h1 class="text-logo">보안대학교</h1>
+            <h1 class="text-logo">
+                <a href="dashboard.html" id="univLink" class="plain-link">보안대학교</a>
+            </h1>
             <span class="portal-title">내 학사정보</span>
         </div>
 
@@ -37,8 +39,11 @@
             </div>
 
             <div class="user-info">
-                <strong id="header-user-info">정승현(213804)</strong>님 
-                <i class="fa-solid fa-circle-user"></i>
+                <!-- 이름 -->
+                <strong id="name">데이터 로딩 중…</strong>
+                <!-- 학번 -->
+                <span id="student_id" class="ml-2">(학번: --)</span>
+                <i class="fa-solid fa-circle-user ml-2"></i>
             </div>
         </div>
     </div>
@@ -210,24 +215,27 @@
             <!-- ② 텍스트 전체 -->
             <div class="profile-info-text">
 
-                <!-- 이름 (가장 크게) -->
-                <div class="user-name" id="user-name-text">정승현</div>
+                <!-- 이름 (가장 크게) - 변수명: name -->
+                <div class="user-name" id="name">정승현</div>
 
-                <!-- 학번 (이름 바로 아래, 작게) -->
-                <div class="user-id" id="user-id-text">213804</div>
+                <!-- 학번 (이름 바로 아래, 작게) - 변수명: student_id -->
+                <div class="user-id" id="student_id">213804</div>
 
-                <!-- 학년 | 재학 | [여] (한 줄에 가로로) -->
+                <!-- 학점/학기 정보 | 재학 | [성별] -->
                 <div class="user-sub-info">
-                    <span id="user-grade">4학년</span>
+                    <!-- ERD의 current_semester(1~8)를 가져와서 JS로 "n학년" 변환 권장 -->
+                    <span id="current_semester">4학년</span> 
                     <span class="divider">|</span>
-                    <span id="user-status-type">재학</span>
+                    <!-- 변수명: status (재학/휴학 등) -->
+                    <span id="status">재학</span>
                     <span class="divider">|</span>
-                    <span>[<span id="user-gender">여</span>]</span>
+                    <!-- 성별은 ERD에 없으므로 일단 유지 (추후 필요시 추가) -->
+                    <span>[<span id="gender">여</span>]</span>
                 </div>
 
-                <!-- 전공 (가장 아래, 길어도 안 잘리게) -->
+                <!-- 전공 (가장 아래) - 변수명: major -->
                 <div class="user-major">
-                    전공 : <span id="user-major-name">에너지자원공학과</span>
+                    전공 : <span id="major">에너지자원공학과</span>
                 </div>
             </div>
         </div>
@@ -364,6 +372,6 @@
         </div>
     </div>
 </div>    
-    <script src="dashboard.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>

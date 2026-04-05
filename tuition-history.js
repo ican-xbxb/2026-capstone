@@ -4,8 +4,12 @@
  * ---------------------------------------------------------------
  */
 const urlParams = new URLSearchParams(window.location.search);
-// URL에 없으면 기본값 '213804' 사용 (테스트 편의성)
-const currentStudentId = urlParams.get('studentId') || '213804'; 
+// 마찬가지로 저장소(localStorage)를 확인하도록 변경
+const currentStudentId = urlParams.get('studentId') || localStorage.getItem('studentId') || '213804';
+
+if (urlParams.get('studentId')) {
+    localStorage.setItem('studentId', currentStudentId);
+}
 
 /* ------------------- 2️⃣ 임의 데이터 생성 함수 (Fallback) ------------------- */
 function generateMockTuition(studentId, count = 4) {

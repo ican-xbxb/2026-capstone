@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. 학번 가져오기 (URL 파라미터 혹은 기본값)
     const urlParams = new URLSearchParams(window.location.search);
-    const studentId = urlParams.get('studentId') || '213804';
+    // URL -> localStorage -> 기본값 순서로 학번을 찾습니다.
+    const studentId = urlParams.get('studentId') || localStorage.getItem('studentId') || '213804';
+
+    // 만약 URL로 들어왔다면 나중을 위해 localStorage에 업데이트해줍니다.
+    if (urlParams.get('studentId')) {
+        localStorage.setItem('studentId', studentId);
+    }
 
     // 2. 화면 요소 잡기
     const gradeListContainer = document.getElementById('grade-list');
